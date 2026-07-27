@@ -9,19 +9,28 @@ Web-based tool for extracting assets.epw out of any WASM-GC based offline Eagler
 This project's source code doesn't host or contains any portion of Eaglercraft and any offline Eaglercraft HTML files.
 Its only job is allows you to extract assets.epw out of HTML file you provided.
 
-Spaghetti code and bugs are expected to be found here, and not every html files will work with this tool. 
+Spaghetti code and bugs are expected to be found here, and not every html files will work with this tool.
 
 ## Tested Eaglercraft HTML files
 
 * EaglercraftX_1.8_u53_WASM-GC_Offline.html<br>expected `assets.epw` sha256: `ecfa438804724de30a871408058b25504746ab14705486cd9ec32855676cc524`
 * Eaglercraft_1.12.2_u3_WASM_Offline.html<br>expected `assets.epw` sha256: `6dc65357ddc681ee95ec8623850de6389d746c723fb7329eb3f8746ffcbbafb3`
 
-All assets.epw files should have a valid file header of `|EAG$WASM|`, hexdump output example below.
+All assets.epw files must have a valid file header of `|EAG$WASM|`, hexdump output example below.
 
 ```
 $ hexdump -n 8 -C assets.epw
 00000000  45 41 47 24 57 41 53 4d                           |EAG$WASM|
 ```
+
+## How it works?
+
+This tool's main function can break down into 4 steps:
+
+1. Find the longest line containing base64 string, by using matching string `window.eaglercraftXOpts.assetsURI`.<br>[code](https://github.com/kinnnine/extractepw/blob/880ac3803af9304ab80d94eda2f6987585a89d25/src/App.jsx#L38)
+2. Now, we should have `window.eaglercraftXOps.assetsURI = "data:application/octet-stream;base64,<huge_and_long_base64_string>==";`, store it to somewhere.<br>[code](https://github.com/kinnnine/extractepw/blob/880ac3803af9304ab80d94eda2f6987585a89d25/src/App.jsx#L40)
+3. Take entire line of matched string into cleaning and stripping out the unneeded, we should have just a very long base64 string.<br>[code](https://github.com/kinnnine/extractepw/blob/880ac3803af9304ab80d94eda2f6987585a89d25/src/App.jsx#L52)
+4. Decode the base64 string into file data, then create a blob file for it, finally we will have assets.epw available for download.<br>[code](https://github.com/kinnnine/extractepw/blob/880ac3803af9304ab80d94eda2f6987585a89d25/src/App.jsx#L59)
 
 ## How to use
 
