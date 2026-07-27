@@ -6,6 +6,9 @@ Web-based tool for extracting assets.epw out of any WASM-GC based offline Eagler
 
 ## Notice
 
+This project's source code doesn't host or contains any portion of Eaglercraft and any offline Eaglercraft HTML files.
+Its only job is allows you to extract assets.epw out of HTML file you provided.
+
 Spaghetti code and bugs are expected to be found here, and not every html files will work with this tool. 
 
 ## Tested Eaglercraft HTML files
