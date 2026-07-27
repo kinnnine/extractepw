@@ -1,6 +1,6 @@
 # ExtractEPW
 
-Web-based tool for extracting assets.epw out of any WASM-GC based Eaglercraft HTML file.
+Web-based tool for extracting assets.epw out of any WASM-GC based offline Eaglercraft HTML file.
 
 [https://kinnnine.github.io/extractepw](https://kinnnine.github.io/extractepw)
 
