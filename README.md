@@ -16,7 +16,7 @@ Spaghetti code and bugs are expected to be found here, and not every html files 
 * EaglercraftX_1.8_u53_WASM-GC_Offline.html<br>expected `assets.epw` sha256: `ecfa438804724de30a871408058b25504746ab14705486cd9ec32855676cc524`
 * Eaglercraft_1.12.2_u3_WASM_Offline.html<br>expected `assets.epw` sha256: `6dc65357ddc681ee95ec8623850de6389d746c723fb7329eb3f8746ffcbbafb3`
 
-All assets.epw files must have a valid file header of `|EAG$WASM|`, hexdump output example below.
+Valid assets.epw must have a file header of `|EAG$WASM|`, hexdump output example below.
 
 ```
 $ hexdump -n 8 -C assets.epw
